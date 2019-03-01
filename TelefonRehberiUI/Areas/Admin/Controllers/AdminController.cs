@@ -78,5 +78,39 @@ namespace TelefonRehberiUI.Areas.Admin.Controllers
             bool isAdded = _employeeService.AddOrUpdate(employee);
             return isAdded;
         }
+
+        public ActionResult DepartmentControl()
+        {
+            List<Department> departments = _departmentService.GetAll();
+            return View(departments);
+        }
+
+        public ActionResult AddNewDepartment()
+        {
+            return View();
+        }
+
+        public bool SaveNewDepartment(Department department)
+        {
+            bool isUpdated = _departmentService.AddOrUpdate(department);
+            return isUpdated;
+        }
+
+        public ActionResult UpdateDepartment(int _id)
+        {
+            ViewBag.departmentId = _id;
+            return View();
+        }
+
+        public bool SaveUpdateDepartment(Department department)
+        {
+            bool isUpdated = _departmentService.AddOrUpdate(department);
+            return isUpdated;
+        }
+        public bool DeleteDepartment(int _id)
+        {
+            bool isDeleted = _departmentService.Delete(_id);
+            return isDeleted;
+        }
     }
 }

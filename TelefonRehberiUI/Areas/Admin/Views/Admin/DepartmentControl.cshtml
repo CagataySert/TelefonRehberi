@@ -1,0 +1,65 @@
+﻿@model List<TelefonRehberiEntities.Entities.Department>
+@{
+    ViewBag.Title = "DepartmentControl";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+<h2>DepartmentControl</h2>
+
+<div class="container">
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-md-2">
+            @Html.ActionLink("Add New Department", "AddNewDepartment", "Admin", null, new { @class = "btn btn-success" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Department Id</th>
+                        <th>Department Name</th>
+                        <th>Update Department</th>
+                        <th>Delete Department</th>
+                    </tr>                    
+                </thead>
+                <tbody>
+                    @foreach (var department in Model)
+                    {
+                    <tr id="@department.Id">
+                        <td>@department.Id</td>
+                        <td>@department.Name</td>
+                        <td>@Html.ActionLink("Update", "UpdateDepartment", "Admin", new { _id = department.Id }, new { @class = "btn btn-primary" })</td>
+                        <td><button type="button" class="btn btn-danger" onclick="deleteDepertment(@department.Id);">Delete</button></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function deleteDepertment(departmentId) {
+        $.ajax({
+            url: "@Url.Action("DeleteDepartment","Admin")",
+            type: "POST",
+            data: { "_id": departmentId },
+            success: function (response) {
+                if (response == "True") {
+                    let departmentRow = document.getElementById(departmentId);
+                    departmentRow.remove();
+                }
+                else {
+                    swal({
+                        title: 'Oops...',
+                        text: 'Please fill required fields..',
+                        icon: 'error',
+                        button: 'Try again',
+                    });
+                }
+            }
+        });
+    }
+</script>

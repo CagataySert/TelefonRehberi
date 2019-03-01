@@ -162,6 +162,9 @@
     <Content Include="Areas\Admin\Views\Admin\GetAllEmployees.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DetailOfEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\AddNewEmployee.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DepartmentControl.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddNewDepartment.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\UpdateDepartment.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

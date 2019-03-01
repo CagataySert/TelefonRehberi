@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "AddNewDepartment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@if (Session["CheckUserRole"] == "Admin")
+{
+    <h2>Add New Department</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form id="addNewDepartment">
+                    <div class="form-group">
+                        <label for="name">Department Name</label>
+                        <input type="text" class="form-control" id="name" name="name" />
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="addNewDepartment();">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h3>You are not allowed to this page..</h3>
+}
+
+<script>
+    $("#addNewDepartment").validate({
+        errorElement: "errorElement",
+        rules: {
+            name: {
+                required: true,
+                maxlength: 100
+            }
+        }
+    });
+
+    function addNewDepartment() {
+        let name = document.getElementById("name").value;
+        let isFormFilled = $("#addNewDepartment").valid();
+
+        if (isFormFilled) {
+            $.ajax({
+            url: "@Url.Action("SaveNewDepartment","Admin")",
+            type: "POST",
+            data: { "Name" : name },
+            success: function (response) {
+                    if (response == "True") {
+                        window.location.href = "http://localhost:50570/Admin/Admin/DepartmentControl";
+                    }
+                    else {
+                        swal({
+                            title: 'Oops...',
+                            text: 'An error occured during the process..',
+                            icon: 'error',
+                            button: 'Try again',
+                        });
+                    }
+                }
+            });
+        }
+        else {
+            swal({
+                title: 'Oops...',
+                text: 'Please fill required fields..',
+                icon: 'error',
+                button: 'Try again',
+            });
+        }
+    }
+</script>
