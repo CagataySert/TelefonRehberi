@@ -39,9 +39,9 @@ namespace TelefonRehberiDAL.EfDal.Concrete
                 }
 
                 List<Manager> managers = new List<Manager>();
-                managers.Add(new Manager() { Id = 1, FirstName = "Burhan", Lastname = "Altıntop", DepartmentId = 1 });
-                managers.Add(new Manager() { Id = 2, FirstName = "Cem", Lastname = "Aslan", DepartmentId = 2 });
-                managers.Add(new Manager() { Id = 3, FirstName = "Tanrıverdi", Lastname = "Kale", DepartmentId = 3 });
+                managers.Add(new Manager() { Id = 1, FirstName = "Burhan", LastName = "Altıntop", DepartmentId = 1 });
+                managers.Add(new Manager() { Id = 2, FirstName = "Cem", LastName = "Aslan", DepartmentId = 2 });
+                managers.Add(new Manager() { Id = 3, FirstName = "Tanrıverdi", LastName = "Kale", DepartmentId = 3 });
 
                 foreach (var manager in managers)
                 {

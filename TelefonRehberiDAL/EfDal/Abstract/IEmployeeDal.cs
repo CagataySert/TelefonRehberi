@@ -9,5 +9,6 @@ namespace TelefonRehberiDAL.EfDal.Abstract
 {
     public interface IEmployeeDal:IRepositoryDal<Employee>
     {
+        EmployeeWithDpName GetEmployeeWithDpName(int _id);
     }
 }

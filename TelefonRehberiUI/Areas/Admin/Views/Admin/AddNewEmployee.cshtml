@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "AddNewEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<style>
+    errorelement {
+        color: red;
+    }
+</style>
+@if (Session["CheckUserRole"] == "Admin")
+{
+    <h2>AddNewEmployee</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form id="addNewEmployee">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="FirstName" class="form-control" placeholder="First Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="LastName" class="form-control" placeholder="Last Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" id="phoneNumber" name="PhoneNumber" class="form-control" placeholder="0537 652...." />
+                    </div>
+                    <div class="form-group">
+                        <label for="departments">Departments</label>
+                        <select class="form-control" id="departments" name="DepartmentId" onchange="getManagers()">
+                            @foreach (var department in ViewBag.departments)
+                            {
+                                <option value="@department.Id">@department.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="managers">Managers</label>
+                        <select class="form-control" id="managers" name="managers" disabled></select>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="addNewEmployee();">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h3>You are not allowed to this page..</h3>
+}
+
+
+<script>
+    function getManagers() {
+        let departmentId = $("#departments option:selected").val();
+        $.ajax({
+            url: "@Url.Action("GetManagers","Admin")",
+            type: "GET",
+            data: {"departmentId" : departmentId},
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                let managersElement = document.getElementById("managers");
+                managersElement.innerHTML = " ";
+                for (var i = 0; i < response.length; i++) {
+                    let option = document.createElement("option");
+                    option.innerText = response[i].FirstName + " " + response[i].LastName;
+                    option.value = response[i].Id;
+                    managersElement.appendChild(option);
+                }
+                managersElement.removeAttribute("disabled");
+            }
+        });
+    }
+
+    $("#addNewEmployee").validate({
+        errorElement: "errorElement",
+        rules: {
+            FirstName: {
+                required: true,
+                rangelength: [2, 30]
+            },
+            LastName: {
+                required: true,
+                rangelength: [2, 30]
+            },
+            PhoneNumber: {
+                required: true,
+                rangelength: [8, 16]
+            },
+            DepartmentId: {
+                required: true
+            },
+            managers: {
+                required: true
+            }
+        }
+    });
+
+    //----------------------------------For Turkish Members-------------------------------
+    //$.validator.messages.required = 'Bu alanı boş bırakamazsınız.';
+    //$.validator.messages.email = "Lütfen geçerli bir mail adresi giriniz.";
+    //$.validator.messages.rangelength = "Lütfen {0} - {1} aralığında karakter giriniz."
+    //$.validator.messages.maxlength = "{0} karakterden daha fazlasını kullanmayınız."
+    //-------------------------------------------------------------------------------------
+
+    function addNewEmployee() {
+        let isFormFilled = $("#addNewEmployee").valid();
+        if (isFormFilled) {
+            let formData = $("#addNewEmployee").serializeArray();
+            data = {};
+            formData.map(function (arrayMember) {
+                data[arrayMember.name] = arrayMember.value;
+            });
+            delete data.members;
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SaveNewEmployeeForm", "Admin")",
+                data: data,
+                success: function (response) {
+                    if (response == "True") {
+                        swal({
+                            title: 'Excellent!',
+                            text: 'New employee is added successfully',
+                            icon: 'success',
+                            button: 'Ok',
+                        });
+                    }
+                    else {
+                        swal({
+                            title: 'Oops...',
+                            text: 'An erorr occured during the process',
+                            icon: 'error',
+                            button: 'Try again',
+                        });
+                    }
+                }
+            });
+        }
+        else {
+            swal({
+                title: 'Oops...',
+                text: 'Please fill required fields..',
+                icon: 'error',
+                button: 'Try again',
+            });
+        }
+    }
+</script>

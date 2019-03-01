@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using TelefonRehberiUI.NinjectController;
 
 namespace TelefonRehberiUI
 {
@@ -13,6 +14,9 @@ namespace TelefonRehberiUI
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

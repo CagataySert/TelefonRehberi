@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelefonRehberiUI", "Telefon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelefonRehberiEntity", "TelefonRehberiEntities\TelefonRehberiEntity.csproj", "{33A1CDF3-DDFB-4214-BCD6-5F7C18DE1B90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelefonReberiBLL", "TelefonReberiBLL\TelefonReberiBLL.csproj", "{6087F0A2-7A93-4505-B3A6-EA6D257F222D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{33A1CDF3-DDFB-4214-BCD6-5F7C18DE1B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33A1CDF3-DDFB-4214-BCD6-5F7C18DE1B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33A1CDF3-DDFB-4214-BCD6-5F7C18DE1B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6087F0A2-7A93-4505-B3A6-EA6D257F222D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6087F0A2-7A93-4505-B3A6-EA6D257F222D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6087F0A2-7A93-4505-B3A6-EA6D257F222D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6087F0A2-7A93-4505-B3A6-EA6D257F222D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

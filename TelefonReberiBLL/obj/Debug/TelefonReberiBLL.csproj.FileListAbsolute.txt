@@ -1,0 +1,14 @@
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\TelefonReberiBLL.dll
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\TelefonReberiBLL.pdb
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\TelefonRehberiDAL.dll
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\TelefonRehberiEntities.dll
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\EntityFramework.dll
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\TelefonRehberiDAL.pdb
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\TelefonRehberiDAL.dll.config
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\TelefonRehberiEntities.pdb
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\bin\Debug\EntityFramework.xml
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\obj\Debug\TelefonReberiBLL.csprojAssemblyReference.cache
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\obj\Debug\TelefonReberiBLL.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\obj\Debug\TelefonReberiBLL.csproj.CopyComplete
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\obj\Debug\TelefonReberiBLL.dll
+C:\Users\user\source\repos\TelefonRehberi\TelefonReberiBLL\obj\Debug\TelefonReberiBLL.pdb

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Entities\Department.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\EmployeeWithDpName.cs" />
     <Compile Include="Entities\Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

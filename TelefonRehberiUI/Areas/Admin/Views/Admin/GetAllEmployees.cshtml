@@ -1,0 +1,79 @@
+﻿@model List<TelefonRehberiEntities.Entities.Employee>
+@{
+    ViewBag.Title = "GetAllEmployees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@if (Session["CheckUserRole"] == "Admin")
+{
+    <h2>List Of Employees</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2" style="margin-bottom: 10px;">
+                @Html.ActionLink("Add New Employee","AddNewEmployee","Admin",null,new { @class="btn btn-success"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone Number</th>
+                            <th>Get Detail</th>
+                            <th>Delete Employee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var employee in Model)
+                        {
+                            <tr id="employeeRowId@(employee.Id)">
+                                <td>@(i++)</td>
+                                <td>@employee.FirstName</td>
+                                <td>@employee.LastName</td>
+                                <td>@employee.PhoneNumber</td>
+                                <td>@Html.ActionLink("Get Detail", "DetailOfEmployee", "Admin", new { _id = employee.Id }, new { @class = "btn btn-primary" })</td>
+                                <td><button onclick="deleteEmployee(@employee.Id);" class="btn btn-danger" type="button">Delete</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <h3>You are not allowed to this page..</h3>
+}
+
+
+<script>
+    function deleteEmployee(id) {
+        $.ajax({
+            url: "@Url.Action("DeleteEmployee","Admin")",
+            type: "POST",
+            data: { "_id" : id },
+            success: function (response) {
+                if ("True") {
+                    var rowElement = document.getElementById("employeeRowId" + id);
+                    rowElement.remove();
+                }
+                else {
+                    swal({
+                        title: 'Oops...',
+                        text: 'An error occured during the process.',
+                        icon: 'error',
+                        button: 'Try again',
+                    });
+                }
+            }
+        });
+    }
+</script>

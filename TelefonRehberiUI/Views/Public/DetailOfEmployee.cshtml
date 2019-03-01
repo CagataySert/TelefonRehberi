@@ -1,0 +1,34 @@
+﻿@model TelefonRehberiEntities.Entities.EmployeeWithDpName
+@{
+    ViewBag.Title = "DetailOfEmployee";
+}
+
+<h2>Detail Of Employee</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Department Name</th>
+                        <th>Department Id (Number) </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.FirstName</td>
+                        <td>@Model.LastName</td>
+                        <td>@Model.PhoneNumber</td>
+                        <td>@Model.DepartmentName</td>
+                        <td>@Model.DepartmentId</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -13,7 +13,7 @@ namespace TelefonRehberiDAL.EfDal.Concrete
     public class EfEmployeeDal : IEmployeeDal
     {
         private static EfEmployeeDal _efEmployeeDal;
-        static Object _lockObject = new object();    
+        static Object _lockObject = new object();
 
         public EfEmployeeDal()
         {
@@ -65,6 +65,39 @@ namespace TelefonRehberiDAL.EfDal.Concrete
         public List<Employee> GetAll(Expression<Func<Employee, bool>> predicate)
         {
             return context.Employees.Where(predicate).ToList();
+        }
+
+        public EmployeeWithDpName GetEmployeeWithDpName(int _id)
+        {
+            Employee employee = context.Employees
+                .Where(e => e.Id == _id)
+                .FirstOrDefault();
+
+            var dbModel = context.Departments
+                                            .Where(d => d.Id == employee.DepartmentId)
+                                            .Select(department => new 
+                                            {
+                                                DepartmentId = department.Id,
+                                                DepartmentName = department.Name,
+                                                employee.Id,
+                                                employee.FirstName,
+                                                employee.LastName,
+                                                employee.PhoneNumber
+                                            }).FirstOrDefault();
+
+            EmployeeWithDpName employeeWithDpName = new EmployeeWithDpName();
+            employeeWithDpName.DepartmentId = dbModel.DepartmentId;
+            employeeWithDpName.DepartmentName = dbModel.DepartmentName;
+            employeeWithDpName.Id = dbModel.Id;
+            employeeWithDpName.FirstName = dbModel.FirstName;
+            employeeWithDpName.LastName = dbModel.LastName;
+            employeeWithDpName.PhoneNumber = dbModel.PhoneNumber;
+
+            if (employeeWithDpName != null)
+            {
+                return employeeWithDpName;
+            }
+            return null;
         }
     }
 }

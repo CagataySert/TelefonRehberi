@@ -1,5 +1,6 @@
 C:\Users\user\source\repos\TelefonRehberi\TelefonRehberiEntities\bin\Debug\TelefonRehberiEntities.dll
 C:\Users\user\source\repos\TelefonRehberi\TelefonRehberiEntities\bin\Debug\TelefonRehberiEntities.pdb
+C:\Users\user\source\repos\TelefonRehberi\TelefonRehberiEntities\obj\Debug\TelefonRehberiEntity.csprojAssemblyReference.cache
 C:\Users\user\source\repos\TelefonRehberi\TelefonRehberiEntities\obj\Debug\TelefonRehberiEntity.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\TelefonRehberi\TelefonRehberiEntities\obj\Debug\TelefonRehberiEntities.dll
 C:\Users\user\source\repos\TelefonRehberi\TelefonRehberiEntities\obj\Debug\TelefonRehberiEntities.pdb
